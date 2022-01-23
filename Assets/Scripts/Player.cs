@@ -7,9 +7,6 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject model;
     [SerializeField] private float speed = 10;
     [SerializeField] private float rotateSpeed = 400;
-    [SerializeField] private Image debugImage;
-    [SerializeField] private ColorMapReader colorMapReader;
-    
 
     private void Update()
     {
@@ -25,12 +22,5 @@ public class Player : MonoBehaviour
         
         direction.y = -0.1f;
         characterController.Move(direction * (Time.deltaTime * speed));
-        
-        CheckGroundColor();
-    }
-
-    private void CheckGroundColor()
-    {
-        debugImage.color = colorMapReader.CheckPointInWhiteColor(transform.position)? Color.green : Color.red;
     }
 }

@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b68a0a18232175042b3fe13614eb4c1d, type: 2}
     - target: {fileID: 1852779189764019057, guid: 0fd5db09bb95a13458bc6d5fb380c4f5, type: 3}
       propertyPath: m_Name
-      value: BlackRat
+      value: ShadowRat
       objectReference: {fileID: 0}
     - target: {fileID: 1852779189764019069, guid: 0fd5db09bb95a13458bc6d5fb380c4f5, type: 3}
       propertyPath: m_RootOrder
@@ -67,6 +67,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: b68a0a18232175042b3fe13614eb4c1d, type: 2}
+    - target: {fileID: 8445785441413140541, guid: 0fd5db09bb95a13458bc6d5fb380c4f5, type: 3}
+      propertyPath: isLight
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8556067917193250852, guid: 0fd5db09bb95a13458bc6d5fb380c4f5, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

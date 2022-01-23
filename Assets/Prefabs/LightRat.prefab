@@ -252,10 +252,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1852779189764019069}
-  - component: {fileID: 1534353326286165135}
   - component: {fileID: 8445785441413140541}
+  - component: {fileID: 3650119478923235751}
   m_Layer: 0
-  m_Name: WhiteRat
+  m_Name: LightRat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -276,24 +276,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!143 &1534353326286165135
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1852779189764019057}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 1
-  m_Radius: 0.17
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.36, z: 0}
 --- !u!114 &8445785441413140541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,7 +288,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec1519b23c26d9b448bbffddaf15b393, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  isLight: 1
+  navMeshAgent: {fileID: 3650119478923235751}
+--- !u!195 &3650119478923235751
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852779189764019057}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.17
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1957680800026286861
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,7 +417,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2557108327838179048}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.053, z: 0}
   m_LocalScale: {x: 0.27172, y: 0.27172, z: 0.27172}
   m_Children:
   - {fileID: 8795569663589266131}

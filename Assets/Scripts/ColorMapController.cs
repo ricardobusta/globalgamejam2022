@@ -2,10 +2,12 @@ using System;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering;
 
-public class ColorMapReader : MonoBehaviour
+public class ColorMapController : MonoBehaviour
 {
     [SerializeField] private RenderTexture colorMapRt;
     [SerializeField] private Camera cam;
+    [SerializeField] private EnemySpawner enemySpawner;
+    
 
     private Texture2D _colorMap;
 
@@ -16,15 +18,28 @@ public class ColorMapReader : MonoBehaviour
 
     private void Update()
     {
+        ReadColor();
+
+        foreach (var enemy in enemySpawner.EnemyPool)
+        {
+            if (enemy.gameObject.activeSelf)
+            {
+                enemy.SetEnvironmentColor(CheckIfPointIsLight(enemy.transform.position));
+            }
+        }
+    }
+
+    private void ReadColor()
+    {
         RenderTexture.active = colorMapRt;
-            
-        _colorMap.ReadPixels(new Rect(0,0, colorMapRt.width, colorMapRt.height), 0, 0);
+
+        _colorMap.ReadPixels(new Rect(0, 0, colorMapRt.width, colorMapRt.height), 0, 0);
         _colorMap.Apply();
 
         RenderTexture.active = null;
     }
 
-    public bool CheckPointInWhiteColor(Vector3 p)
+    private bool CheckIfPointIsLight(Vector3 p)
     {
         var pos = cam.WorldToScreenPoint(p);
         pos.x = (pos.x + (Screen.height - Screen.width)/2f) / Screen.height;

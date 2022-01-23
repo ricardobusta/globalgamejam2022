@@ -1,12 +1,20 @@
-using System;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private Camera cam;
-    [SerializeField] private Color color;
+    [SerializeField] private bool isLight;
+    [SerializeField] private NavMeshAgent navMeshAgent;
 
-    private void Update()
+    private bool _hitable;
+
+    public void SetTarget(Vector3 point)
     {
+        navMeshAgent.SetDestination(point);
+    }
+    
+    public void SetEnvironmentColor(bool floorIsLight)
+    {
+        _hitable = !(isLight ^ floorIsLight);
     }
 }
