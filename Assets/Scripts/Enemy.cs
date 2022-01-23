@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -15,6 +16,14 @@ public class Enemy : MonoBehaviour
     
     public void SetEnvironmentColor(bool floorIsLight)
     {
-        _hitable = !(isLight ^ floorIsLight);
+        _hitable = isLight ^ floorIsLight;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (_hitable)
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

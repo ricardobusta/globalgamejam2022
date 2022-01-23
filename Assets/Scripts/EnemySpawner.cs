@@ -9,16 +9,15 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Enemy lightEnemyPrefab;
     [SerializeField] private Player player;
     
-
-    [NonSerialized] public List<Enemy> EnemyPool = new List<Enemy>();
+    [NonSerialized] public readonly List<Enemy> EnemyPool = new List<Enemy>();
 
     private void Start()
     {
+        var spawners = FindObjectsOfType<Spawner>();
+        
         for (var i = 0; i < 100; i++)
         {
-            var pos = Random.onUnitSphere;
-            pos.y = 0;
-            pos = pos.normalized * 15;
+            var pos = spawners[Random.Range(0, spawners.Length)].spawnPos.position;
 
             var enemy = Random.Range(0, 2) % 2 == 0 ? shadowEnemyPrefab : lightEnemyPrefab;
             EnemyPool.Add(Instantiate(enemy, pos, Quaternion.identity));

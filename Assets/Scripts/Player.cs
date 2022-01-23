@@ -1,26 +1,65 @@
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private CharacterController characterController;
-    [SerializeField] private GameObject model;
-    [SerializeField] private float speed = 10;
-    [SerializeField] private float rotateSpeed = 400;
+    // References
+    [SerializeField] private NavMeshAgent navMeshAgent;
+    [SerializeField] private GameObject attackHitBox;
+    [SerializeField] private Slider energyBar;
+    
+
+    // Parameters
+    [SerializeField] private float energyRecoveryRate;
+    [SerializeField] private float pounceEnergy;
+    [SerializeField] private float pounceSpeed = 15;
+    [SerializeField] private float pounceDuration = 0.1f;
+
+    private float _pouncing;
+    private float _energy;
+
+    private void Start()
+    {
+        _energy = 1;
+    }
 
     private void Update()
     {
-        var v = Input.GetAxisRaw("Vertical");
-        var h = Input.GetAxisRaw("Horizontal");
-        var direction = new Vector3(h, 0, v).normalized;
-
-        if (direction != Vector3.zero)
+        _energy += energyRecoveryRate * Time.deltaTime;
+        if (_energy > 1)
         {
-            model.transform.rotation = Quaternion.RotateTowards(model.transform.rotation,
-                Quaternion.LookRotation(direction, Vector3.up), rotateSpeed * Time.deltaTime);
+            _energy = 1;
         }
         
-        direction.y = -0.1f;
-        characterController.Move(direction * (Time.deltaTime * speed));
+        if (_pouncing <= 0 && _energy > pounceEnergy && Input.GetButtonDown("Jump"))
+        {
+            _pouncing = pounceDuration;
+            _energy -= pounceEnergy;
+            attackHitBox.SetActive(true);
+        }
+
+        energyBar.value = _energy;
+
+        if (_pouncing > 0)
+        {
+            _pouncing -= Time.deltaTime;
+            if (_pouncing <= 0)
+            {
+                attackHitBox.SetActive(false);
+            }
+            else
+            {
+                navMeshAgent.velocity = transform.forward * pounceSpeed;    
+            }
+        }
+        else
+        {
+            var v = Input.GetAxisRaw("Vertical");
+            var h = Input.GetAxisRaw("Horizontal");
+            var direction = new Vector3(h, 0, v).normalized;
+
+            navMeshAgent.velocity = direction * navMeshAgent.speed;
+        }
     }
 }
