@@ -13,6 +13,10 @@ public class EnemySpawner : MonoBehaviour
         {
             var pos = Random.onUnitSphere;
             pos.y = 0;
+            pos = pos.normalized * 15;
+
+            var enemy = Random.Range(0, 2) % 2 == 0 ? blackEnemy : whiteEnemy;
+            Instantiate(enemy, pos, Quaternion.identity);
         }
     }
 
