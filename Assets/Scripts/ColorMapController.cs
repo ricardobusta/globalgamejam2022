@@ -20,7 +20,7 @@ public class ColorMapController : MonoBehaviour
     {
         ReadColor();
 
-        foreach (var enemy in enemySpawner.EnemyPool)
+        foreach (var enemy in enemySpawner.activeEnemiesList)
         {
             if (enemy.gameObject.activeSelf)
             {

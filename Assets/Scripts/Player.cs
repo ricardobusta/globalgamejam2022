@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         _energy = 1;
+        attackHitBox.SetActive(false);
     }
 
     private void Update()
