@@ -8,9 +8,16 @@ public class LightMover : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float centerAngle;
     [SerializeField] private float amplitude;
+    [SerializeField] private float initialAngle;
+    
 
     private const float TwoPi = Mathf.PI * 2;
     private float _angle = 0;
+
+    private void Start()
+    {
+        _angle = initialAngle * Mathf.Deg2Rad;
+    }
 
     private void Update()
     {

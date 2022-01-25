@@ -11,16 +11,15 @@ public class EnemySpawner : MonoBehaviour
     
     [NonSerialized] public readonly List<Enemy> EnemyPool = new List<Enemy>();
 
+    private Spawner[] _spawners;
+
     private void Start()
     {
         var spawners = FindObjectsOfType<Spawner>();
         
         for (var i = 0; i < 100; i++)
         {
-            var pos = spawners[Random.Range(0, spawners.Length)].spawnPos.position;
-
-            var enemy = Random.Range(0, 2) % 2 == 0 ? shadowEnemyPrefab : lightEnemyPrefab;
-            EnemyPool.Add(Instantiate(enemy, pos, Quaternion.identity));
+            SpawnRat();
         }
     }
 
@@ -34,5 +33,13 @@ public class EnemySpawner : MonoBehaviour
                 enemy.SetTarget(playerPos);
             }
         }
+    }
+
+    private void SpawnRat()
+    {
+        var pos = _spawners[Random.Range(0, _spawners.Length)].spawnPos.position;
+
+        var enemy = Random.Range(0, 2) % 2 == 0 ? shadowEnemyPrefab : lightEnemyPrefab;
+        EnemyPool.Add(Instantiate(enemy, pos, Quaternion.identity));
     }
 }

@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] private NavMeshAgent navMeshAgent;
     [SerializeField] private GameObject attackHitBox;
     [SerializeField] private Slider energyBar;
-    
+    [SerializeField] private Animator animator;
 
     // Parameters
     [SerializeField] private float energyRecoveryRate;
@@ -61,5 +61,7 @@ public class Player : MonoBehaviour
 
             navMeshAgent.velocity = direction * navMeshAgent.speed;
         }
+        
+        animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
     }
 }

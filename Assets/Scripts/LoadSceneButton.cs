@@ -1,11 +1,12 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class StartButton : MonoBehaviour
+public class LoadSceneButton : MonoBehaviour
 {
     [SerializeField] private Button button;
+    [SerializeField] private string scene;
+    
 
     private void Awake()
     {
@@ -14,6 +15,6 @@ public class StartButton : MonoBehaviour
 
     private void OnButtonClick()
     {
-        SceneManager.LoadScene("Scenes/Gameplay");
+        SceneManager.LoadScene(scene);
     }
 }
