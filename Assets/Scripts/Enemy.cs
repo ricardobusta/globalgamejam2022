@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     
     public void Init(bool isLight, Vector3 pos, Quaternion rot, Action<Enemy> onDestroy)
     {
+        gameObject.SetActive(true);
         var tr = transform;
         tr.position = pos;
         tr.rotation = rot;
