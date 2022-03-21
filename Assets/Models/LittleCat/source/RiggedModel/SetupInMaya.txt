@@ -1,0 +1,13 @@
+Setup In Maya-
+
+open "LK_RIG_pub.ma" 
+
+create new project (file->project window->"new")
+
+save rig file in the new project
+
+copy the folder "MainCat" from this folder and paste it inside "sourceimages" folder
+
+close and open maya
+
+textures should now be visible (checkered ball button in viewport must be on)

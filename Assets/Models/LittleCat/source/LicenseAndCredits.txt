@@ -1,0 +1,8 @@
+Copyright (c) 2022 Double Dagger Studio. Some rights reserved.
+
+Little Kitty is part of the game Little Kitty, Big City (www.LittleKittyBigCity.com)
+
+Design by: Juliana Chen and Valentina Hawes
+Model by: Valentina Hawes
+Rig, Animations by: Micah Breitweiser
+

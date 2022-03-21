@@ -1,0 +1,49 @@
+Export Animation To FBX For Game Engines-
+
+All animation must be baked first 
+
+
+
+To bake blendshapes, go windows->animation editors->shape editor. Select blend shape node (top node within the editor)
+by right clicking and choosing "select blend shape node"
+
+with that selected go edit->keys->bake simulation (option box)
+
+Input your start and end range, sample by 1., smart bake off
+
+click "bake". The scene will compute and then blend shapes are baked
+
+
+
+
+To bake the bone hierarchy, open outliner (windows->outliner)
+
+Find "DefSkeleton_GRP" and expand all (shift click the plus sign)
+
+Select "CG", then shift select "tail_end_end_end", selecting that entire bone hierarchy
+
+Go edit->keys->bake simulation (options box)
+
+Bake with same settings as above
+
+
+
+
+Now that all animation is baked, you can export it
+
+
+
+Select "CG" and unparent from rig (shift + P key)
+
+Select "GRP_RIG_ALL" and delete
+
+Select hierarchy from "CG" to "tail_end_end_end", "maincat_body", and the blend shape node (right click top node within
+shape editor)
+
+With all selected, go file->export selection (options box)
+
+Under "file type" choose "FBX export"
+
+Input the settings found in "ExportAnimSettings.png" and save the export
+
+Your anim should now be ready to import to game engine
